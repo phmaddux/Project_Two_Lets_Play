@@ -38,16 +38,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Resgister Controllers
-// unsure of the app.use section
-
 const playedController = require('./routes/playedController')
-app.use('/', playedController);
+app.use('/played', playedController);
 
-var wishlistController = require('./routes/indexController');
-app.use('/', indexController);
-
-const gameController = require('./routes/gameController')
-app.use('/', gameController);
+var wishlistController = require('./routes/wishlistController');
+app.use('/wishlist', wishlistController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,8 +63,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Express started on ${port}`)
-})
