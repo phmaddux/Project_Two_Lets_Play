@@ -13,17 +13,17 @@ const methodOverride = require('method-override')
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI); 
 
-const db =mongoose.connection
+const db = mongoose.connection
 db.on('error', (error => {
-  console.log(error)
+  console.log(error);
 }))
 db.once('open', () => {
-  console.log('Connected to MongoDB!')
+  console.log('Connected to MongoDB!');
 })
 
 var app = express();
 
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,14 +39,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Resgister Controllers
 // unsure of the app.use section
-var indexController = require('./routes/indexController');
-app.use('/', indexController);
 
 const playedController = require('./routes/playedController')
-app.use('/', playedController)
+app.use('/', playedController);
+
+var wishlistController = require('./routes/indexController');
+app.use('/', indexController);
 
 const gameController = require('./routes/gameController')
-app.use('/', gameController)
+app.use('/', gameController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,9 +69,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-// code that needs to go?
-// var index = require('./routes/index');
-// var users = require('./routes/users');
-
-// app.use('/', index);
-// app.use('/users', users);
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Express started on ${port}`)
+})
