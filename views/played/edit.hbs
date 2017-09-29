@@ -1,0 +1,15 @@
+<div>
+    <h1>User's Played Games</h1>
+
+    <h3>Played Games:</h3>
+    <div>
+        <a href="/played/new">Add New Game</a>
+    </div>
+    {{#each playeds}}
+        
+        <div>
+            <a href="/companies/{{this._id}}">{{this.name}} Info</a>
+            <a href="/companies/{{this._id}}/snowboards">{{this.name}}'s Snowboards</a>
+        </div>
+    {{/each}}
+</div>
