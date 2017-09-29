@@ -4,13 +4,15 @@ require('dotenv').config();
 var mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URI)
-const db = mongoose.connect;
+const db = mongoose.connection
+    console.log(db)
+
 // Logs error if you cannot connect to MongoDB
-db.on('error', function (err) {
+db.on('error', (err) => {
     console.log(err);
 });
 // Will log "database has been connected" if it successfully connects.
-db.once('open', function () {
+db.once('open', () => {
     console.log("Connected to MongoDB!");
 });
 
@@ -49,7 +51,7 @@ var games = [cardsAgainstHumanity, arkhamHorror, splendor, catan, scythe, smallW
 
 // putting games in each list
 lists.forEach((list, i) => {
-    list.games.push(games[i], projects[i +1], projects[i + 2]);
+    list.games.push(games[i], games[i +1], games[i + 2]);
 
     list.save((err) => {
         if (err) {
