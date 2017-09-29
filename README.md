@@ -1,3 +1,22 @@
-# Project_Two_Lets_Play
-Project Two for GA. This is the first pass at my 'Let's Play' idea.
-This is going to be a site which allows the user to catalouge any board games that the user has played recently.
+# Project Two: Lets Play
+
+# Application Name : Let's Play
+
+
+## App Overview
+#### A boardgame site that allows you to track you thoughts on games you have played, and games you want to play.
+
+##Unsolved features
+
+##### Unsolved features will be added here as they are catologued
+
+
+
+Trello:
+
+
+Github:
+
+
+MockingBird:
+

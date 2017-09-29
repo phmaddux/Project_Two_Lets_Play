@@ -17,7 +17,7 @@ const GameSchema = new Schema({
         required: false
     },
     players: {
-        type: Number,
+        type: String,
         required: false
     },
     picture: {
@@ -35,7 +35,7 @@ const PlayedSchema = new Schema({
         type: Number,
         required: false
     },
-    Thoughts: {
+    thoughts: {
         type: String,
         required: false
     },
