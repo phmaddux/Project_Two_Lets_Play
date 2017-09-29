@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+mongoose.Promise = global.Promise;
 // Schema constructors, defined by mongoose
 const Schema = mongoose.Schema;
 
