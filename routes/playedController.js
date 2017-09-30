@@ -10,7 +10,7 @@ router.get('/', (request, response) => {
     const playedId = request.params.playedId
     
     // FIND all of the games in the played database
-    PlayedModel.findById(playedId)
+    PlayedModel.find({})
         .then((played) => {
   
             // THEN once they come back from the database
