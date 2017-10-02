@@ -1,32 +1,38 @@
-<div>
+<body>
     <h1>Played Games</h1>
         <a href="/wishlist">To Wishlist</a>
     <p>
-        {{played}}400
     {{#each played}}
-        <div>
-            {{this.name}}
-        </div>
-        <div>
-            {{played.game.rating}}
-        </div>
-        <div>
-            {{this.genre}}
-        </div>
-        <div>
-            {{this.gameType}}
-        </div>
-        <div>
-            {{this.players}}
-        </div>
-        <div>
-            {{this.timesPlayed}}
-        </div>
-        <div>
-            {{this.averagePlayTime}}
-        </div>
-        <a href="/played/{{game._id}}/edit">Edit Game</a>
-        <a href="/played/{{game._id}}/delete">Delete Game</a>
+        {{#each games}}
+            <div>
+                {{this.name}}
+            </div>
+            <div>
+                Times Played: {{this.timesPlayed}}
+            </div>
+            <div>
+                Rating: {{this.rating}}
+            </div>
+            <div>
+                Genre: {{this.genre}}
+            </div>
+            <div>
+                Game Type: {{this.gameType}}
+            </div>
+            <div>
+                Players: {{this.players}}
+            </div>
+            <div>
+                Play time: {{this.averagePlayTime}} Minutes
+            </div>
+            <a href="/played/games/{{game._id}}/edit">Edit Game</a>
+            <a href="/played/games/{{game._id}}/delete">Delete Game</a>
+            <div>
+                Thoughts: {{this.thoughts}}
+            </div>
+            {{!-- line break --}}
+        {{/each}}
     {{/each}}
+    <a href="/played//New">New Game</a>
     </p>
-</div>
+</body>

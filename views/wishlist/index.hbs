@@ -1,28 +1,32 @@
 <div>
     <h1>Wishlist</h1>
-        <a href="/played">To Wishlist</a>
+        <a href="/played">To Played List</a>
     <p>
-    {{#each wishlists}}
-        <div>
-            {{game.name}}
-        </div>
-        <div>
-            {{this.rating}}
-        </div>
-        <div>
-            {{this.genre}}
-        </div>
-        <div>
-            {{this.gameType}}
-        </div>
-        <div>
-            {{this.players}}
-        </div>
-        <div>
-            {{this.playTime}}
-        </div>
-        <a href="/wishlist/{{game._id}}/edit">Edit Game</a>
-        <a href="/wishlist/{{game._id}}/delete">Delete Game</a>
+        {{wishlist}}
+    {{#each wishlist}}
+        {{#each game}}
+            <div>
+                {{this.name}}
+            </div>
+            <div>
+                {{this.genre}}
+            </div>
+            <div>
+                {{this.gameType}}
+            </div>
+            <div>
+                {{this.gameType}}
+            </div>
+            <div>
+                {{this.players}}
+            </div>
+
+            <a href="/wishlist/{{game._id}}/edit">Edit Game</a>
+            <a href="/wishlist/{{game._id}}/delete">Delete Game</a>
+            <div>
+                {{this.theHype}}
+            </div>
+        {{/each}}
     {{/each}}
     </p>
 </div>

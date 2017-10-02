@@ -3,6 +3,7 @@ var router = express.Router();
 
 const Schema = require('../db/schema.js');
 var PlayedModel = Schema.PlayedModel
+var GameModel = Schema.GameModel
 
 // INDEX route
 router.get('/', (request, response) => {
@@ -12,7 +13,7 @@ router.get('/', (request, response) => {
     // FIND all of the games in the played database
     PlayedModel.find({})
         .then((played) => {
-  
+            console.log(played)
             // THEN once they come back from the database
             // RENDER them in Handlebars
             response.render('played/index', {

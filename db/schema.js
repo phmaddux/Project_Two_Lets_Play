@@ -9,6 +9,10 @@ const GameSchema = new Schema({
         type: String,
         required: true
     },
+    rating:{
+        type: Number,
+        required:false
+    },
     genre:{
         type: String,
         required: false
@@ -25,9 +29,6 @@ const GameSchema = new Schema({
         type: String,
         reuired: false
     },
-});
-
-const PlayedSchema = new Schema({
     timesPlayed: {
         type: Number,
         required: false
@@ -40,14 +41,17 @@ const PlayedSchema = new Schema({
         type: String,
         required: false
     },
-    games: [GameSchema]
-});
-
-const WishlistSchema = new Schema({
     theHype: {
         type: String,
         required: false
     },
+});
+
+const PlayedSchema = new Schema({
+    games: [GameSchema]
+});
+
+const WishlistSchema = new Schema({
     games: [GameSchema]    
 });
 
