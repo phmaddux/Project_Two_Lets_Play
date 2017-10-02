@@ -2,8 +2,7 @@
     <h1>Played Games</h1>
         <a href="/wishlist">To Wishlist</a>
     <p>
-    {{#each played}}
-        {{#each games}}
+        {{#each playedGame.games}}
             <div>
                 {{this.name}}
             </div>
@@ -25,14 +24,13 @@
             <div>
                 Play time: {{this.averagePlayTime}} Minutes
             </div>
-            <a href="/played/games/{{game._id}}/edit">Edit Game</a>
-            <a href="/played/games/{{game._id}}/delete">Delete Game</a>
+            <a href="/played/{{../playedGame._id}}/games/{{this._id}}/edit">Edit Game</a>
+            <a href="/played/{{../playedGame._id}}/games/{{this._id}}/delete">Delete Game</a>
             <div>
                 Thoughts: {{this.thoughts}}
             </div>
-            {{!-- line break --}}
+            <br>
         {{/each}}
-    {{/each}}
     <a href="/played//New">New Game</a>
     </p>
 </body>
