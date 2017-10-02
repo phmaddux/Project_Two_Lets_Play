@@ -1,9 +1,45 @@
-<form action="/played/games/{{company._id}}?_method=PUT" method="POST">
+<form action="/played/{{playedId}}/games/{{game._id}}?_method=PUT" method="POST">
+    <div>
     <label for="name">Name</label>
-    <input type="text" name="name" value="{{company.name}}">
-
-    <label for="country">Country</label>
-    <input type="text" name="country" value="{{company.country}}">
-
-    <input type="Submit" value="Edit">
+    <input type="text" name="name">
+    </div>
+    <div>
+    <label for="picture">Picture</label>
+    <input type="text" name="picture">
+    </div>
+    <div>
+    <label for="genre">Genre</label>
+    <input type="text" name="genre">
+    </div>
+    <div>
+    <label for="gameType">Game Type</label>
+    <input type="text" name="gameType">
+    </div>
+    <div>
+    <label for="players">Players</label>
+    <input type="text" name="players">
+    </div>
+    <div>
+    <label for="picture">Picture</label>
+    <input type="text" name="picture">
+    </div>
+    <div>
+    <label for="timesPlayed">Times Played</label>
+    <input type="text" name="timesPlayed">
+    </div>
+    <div>
+    <label for="averagePlayTime">Play Time</label>
+    <input type="text" name="averagePlayTime">
+    </div>
+    <div>
+    <label for="thoughts">Thoughts</label>
+    <input type="text" name="thoughts">
+    </div>
+    <div>
+    <label for="theHype">The Hype</label>
+    <input type="text" name="theHype">
+    </div>
+    <div>
+    <input type="submit" value="Create">
+    </div>
 </form>
