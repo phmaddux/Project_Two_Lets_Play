@@ -64,6 +64,8 @@ const userSchema = new Schema ({
         type: string,
         required: false
     },
+    played: [],
+    wishlist: [],
 })
 
 // Creating the models for each schema

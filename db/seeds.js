@@ -22,6 +22,7 @@ var Schema = require("./schema.js");
 var GameModel = Schema.GameModel;
 var PlayedModel = Schema.PlayedModel;
 var WishlistModel = Schema.WishlistModel;
+var UserModel = Schema.UserModel;
 
 // Delete all things from the data base
 GameModel.remove({}, function (err) {
@@ -33,10 +34,18 @@ PlayedModel.remove({}, function (err) {
 WishlistModel.remove({}, function (err) {
     console.log(err);
 });
+UserModel.remove({}, function (err) {
+    console.log(err);
+})
 
 // Creating games and lists
 const played = new PlayedModel({})
 const wishlist = new WishlistModel({})
+const users = new UserModel({})
+
+const user1 = new UserModel({ name: "Jerry", location: "The Moon"})
+const user2 = new UserModel({ name: "Anna", location: "Purgatory"})
+const user3 = new UserModel({ name: "Hunter", location: "Atlanta"})
 
 const cardsAgainstHumanity = new GameModel({ name: 'Cards Against Humanity', rating: 9.5, genre: "Party Game", gameType: "Card Game", players: "Unlimited", picture: 'https://i.imgur.com/sgD9JQw.png', timesPlayed: 12, averagePlayTime: 120, thoughts: "This game is hilariously awful. A wonderful game for horrible people.", theHype: "A wonderful game for horrible people."});
 const splendor = new GameModel({ name: 'Splendor', rating: 9, genre: "Party Game", gameType: "Card Game", players: "2 - 5", picture: "https://i.imgur.com/TXMCfWg.png", timesPlayed: "3", averagePlayTime: 45, thoughts: "Taking over the gem trade through card games. An odd idea behind the game but it is certainly fun.", theHype: "",});
@@ -63,7 +72,14 @@ lists.forEach((list, i) => {
     });
 });
 
-
-
+user1.played.push(games[0])
+    user1.save()
+    console.log(user1)
+user2.played.push(games[1])
+    user2.save()
+    console.log(user2)
+user3.wishlist.push(games[2])
+    user3.save()
+    console.log(user3)
 // Disconnect from database
 db.close();
