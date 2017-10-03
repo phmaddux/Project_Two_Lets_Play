@@ -1,7 +1,7 @@
 <body>
     <h1>Played Games</h1>
         <a href="/wishlist">To Wishlist</a>
-    <p>
+    <p class="game">
         {{#each playedGame.games}}
             <h2>
                 {{this.name}}
@@ -32,6 +32,6 @@
             </div>
             <br>
         {{/each}}
-    <a href="/played/{{playedGame._id}}/new">New Game</a>
     </p>
+    <a href="/played/{{playedGame._id}}/new">New Game</a>
 </body>
