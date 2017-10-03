@@ -139,7 +139,7 @@ router.get('/:gamesId', (request, response) => {
 })
 
 // Delete Route
-router.get('/:gameId/delete', (request, response) => {
+router.get('/:playedId/games/:gameId/delete', (request, response) => {
     // grab played Id from the params
     const playedId = request.params.playedId
 
@@ -147,13 +147,13 @@ router.get('/:gameId/delete', (request, response) => {
     const gameId = request.params.gameId
 
     PlayedModel.findById(playedId)
-        .then((company) => {
+        .then((played) => {
             //return played
             //remove game from played
-            const game = played.game.id(gameId).remove()
+            const game = played.games.id(gameId).remove()
 
             // save played and return
-            return playedId.save()
+            return played.save()
         })
         .then(() => {
             // After game is saved, redirect

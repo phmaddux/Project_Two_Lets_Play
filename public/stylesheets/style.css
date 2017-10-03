@@ -21,6 +21,8 @@ div {
 a {
   color: #00B7FF;
   padding-bottom: 6px;
+  padding-top: 6px;
+  padding-left: 25px;
 }
 
 img {
@@ -28,6 +30,6 @@ img {
   width: 280px;
 }
 
-.game {
-  background-color: #C1C1C1;
+#background {
+  border-color: #C1C1C1;
 }
