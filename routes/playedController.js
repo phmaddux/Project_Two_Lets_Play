@@ -86,17 +86,35 @@ router.get('/:playedId/games/:gamesId/edit', (request, response) => {
 })
 
 // Update route
-router.put('/:gamesId/', (request, response) => {
+router.put('/:playedId/games/:gamesId/', (request, response) => {
     // req.body has info about the new game
-    const gamesId = request.body
+    const playedId = request.params.playedId
+    const gamesId = request.params.gamesId
+    const updatedGame = request.body
+    PlayedModel.findById(playedId)
     // find specific played, add new game to games array
-    games.push(gamesId)
+        .then((played) => {
+            const game = played.games.id(gamesId)
+            console.log(updatedGame)
+            game.name = updatedGame.name,
+            game.picture = updatedGame.picture,
+            game.genre = updatedGame.genre,
+            game.gameType = updatedGame.gameType,
+            game.players = updatedGame.players,
+            game.timesPlayed = updatedGame.timesPlayed,
+            game.averagePlayTime = updatedGame.averagePlayTime,
+            game.thoughts = updatedGame.thoughts,
+            game.theHype = updatedGame.theHype
     // save played
-    return games.save()
+            return played.save()
+        })
         .then(() => {
         // reirect to specific saved route    
         response.redirect(`/played`)
-    })    
+        })
+        .catch((error) => {
+            console.log(error)
+        })    
 
 })
     
@@ -114,16 +132,6 @@ router.put('/:gamesId/', (request, response) => {
     //         // after played has been returned
     //         // find the game by id from the played list
     //         const game = played.games.id(gameId)
-
-        //     game.name = updatedGame.name,
-        //     game.picture = updatedGame.picture,
-        //     game.genre = updatedGame.genre,
-        //     game.gameType = updatedGame.gameType,
-        //     game.players = updatedGame.players,
-        //     game.timesPlayed = updatedGame.timesPlayed,
-        //     game.averagePlayTime = updatedGame.averagePlayTime,
-        //     game.thoughts = updatedGame.thoughts,
-        //     game.theHype = updatedGame.theHype
             
         // })
         // save and redirect

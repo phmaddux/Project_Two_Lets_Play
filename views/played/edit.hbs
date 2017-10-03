@@ -1,46 +1,42 @@
-<form action="/played/{{../playedGame._id}}/games/{{games._id}}?_method=PUT" method="POST">
+<form action="/played/{{playedId}}/games/{{game._id}}?_method=PUT" method="POST">
     <div>
     <label for="name">Name</label>
-    <input type="text" name="name" placeholder=>
+    <input type="text" name="name" value="{{game.name}}">
     
     </div>
     <div>
     <label for="picture">Picture</label>
-    <input type="text" name="picture">
+    <input type="text" name="picture" value="{{game.picture}}">
     </div>
     <div>
     <label for="genre">Genre</label>
-    <input type="text" name="genre">
+    <input type="text" name="genre" value="{{game.genre}}">
     </div>
     <div>
     <label for="gameType">Game Type</label>
-    <input type="text" name="gameType">
+    <input type="text" name="gameType" value="{{game.gameType}}">
     </div>
     <div>
     <label for="players">Players</label>
-    <input type="text" name="players">
-    </div>
-    <div>
-    <label for="picture">Picture</label>
-    <input type="text" name="picture">
+    <input type="text" name="players" value="{{game.players}}">
     </div>
     <div>
     <label for="timesPlayed">Times Played</label>
-    <input type="text" name="timesPlayed">
+    <input type="text" name="timesPlayed"  value="{{game.timesPlayed}}">
     </div>
     <div>
     <label for="averagePlayTime">Play Time</label>
-    <input type="text" name="averagePlayTime">
+    <input type="text" name="averagePlayTime" value="{{game.averagePlayTime}}">
     </div>
     <div>
     <label for="thoughts">Thoughts</label>
-    <input type="text" name="thoughts">
+    <input type="text" name="thoughts" value="{{game.thoughts}}">
     </div>
     <div>
     <label for="theHype">The Hype</label>
-    <input type="text" name="theHype">
+    <input type="text" name="theHype" value="{{game.theHype}}">
     </div>
     <div>
-    <input type="Submit" value="Create">
+    <input type="Submit" value="Update">
     </div>
 </form>
