@@ -38,6 +38,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Resgister Controllers
+const indexController = require('./routes/indexController')
+app.use('/',indexController);
+
 const playedController = require('./routes/playedController')
 app.use('/played', playedController);
 
