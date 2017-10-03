@@ -22,12 +22,22 @@ router.get('/', (request, response) => {
         })
             .catch((error) => {
                 console.log(error)
-    })
+        })
 })
 
 // New game
 router.get('/new', (request, response) => {
-    response.render('played/new')
+    const playedId = request.params.playedId
+    PlayedModel.find({})
+        .then((played) => {
+            console.log(played)
+            response.render('played/new', {
+                playGame: played[0]
+            })
+        })
+            .catch((error) => {
+                console.log(error)
+        })
 })
 
 // create route
@@ -76,38 +86,47 @@ router.get('/:playedId/games/:gamesId/edit', (request, response) => {
 })
 
 // Update route
-router.put('/:gamesId', (request, response) => {
-    // get played Id from parameters
-    const playedId = request.params.playedId
-    // get game Id fromt the parameters
-    const gamesId = request.params.gamesId
-    // get updated game from request body
-    const updatedGame = request.body
-
-    PlayedModel.findById(playedId)
-        .then((played) => {
-            // after played has been returned
-            // find the game by id from the played list
-            const game = played.games.id(gameId)
-
-            game.name = updatedGame.name,
-            game.picture = updatedPicture.picture,
-            game.genre = updatedGenre.genre,
-            game.gameType = updatedGameType.gameType,
-            game.players = updatedPlayers.players,
-            game.timesPlayed = updatedTimesPlayed.timesPlayed,
-            game.averagePlayTime = updatedAveragePlayTime.averagePlayTime,
-            game.thoughts = updatedthoughts.thoughts,
-            game.theHype = updatedTheHype.theHype
-            
-            return played.save()
-        })
+router.put('/:gamesId/', (request, response) => {
+    // req.body has info about the new game
+    const gamesId = request.body
+    // find specific played, add new game to games array
+    games.push(gamesId)
+    // save played
+    return games.save()
         .then(() => {
-        // save and redirect
-        response.redirect(`/played/${playedId}/games/${gamesId}`)
-        })
+        // reirect to specific saved route    
+        response.redirect(`/played`)
+    })    
 
 })
+    
+
+
+    // // get played Id from parameters
+    // const playedId = request.params.playedId
+    // // get game Id fromt the parameters
+    // const gamesId = request.params.gamesId
+    // // get updated game from request body
+    // const updatedGame = request.body
+
+    // PlayedModel.findById(playedId)
+    //     .then((played) => {
+    //         // after played has been returned
+    //         // find the game by id from the played list
+    //         const game = played.games.id(gameId)
+
+        //     game.name = updatedGame.name,
+        //     game.picture = updatedGame.picture,
+        //     game.genre = updatedGame.genre,
+        //     game.gameType = updatedGame.gameType,
+        //     game.players = updatedGame.players,
+        //     game.timesPlayed = updatedGame.timesPlayed,
+        //     game.averagePlayTime = updatedGame.averagePlayTime,
+        //     game.thoughts = updatedGame.thoughts,
+        //     game.theHype = updatedGame.theHype
+            
+        // })
+        // save and redirect
 
 // Show route
 router.get('/:gamesId', (request, response) => {

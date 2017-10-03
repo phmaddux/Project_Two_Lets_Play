@@ -3,9 +3,10 @@
         <a href="/wishlist">To Wishlist</a>
     <p>
         {{#each playedGame.games}}
-            <div>
+            <h2>
                 {{this.name}}
-            </div>
+            </h2>
+            <img src={{this.picture}} alt=""></img>
             <div>
                 Times Played: {{this.timesPlayed}}
             </div>
@@ -31,6 +32,6 @@
             </div>
             <br>
         {{/each}}
-    <a href="/played//New">New Game</a>
+    <a href="/played/new">New Game</a>
     </p>
 </body>
