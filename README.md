@@ -12,6 +12,7 @@
 ##### Making the times played field a button counter
 ##### Sorting the games by either rating, number of players, or alphabetically
 ##### Making the CS more in line with a mobile.
+#####Making the landing page the users
 ###Users Model not implemented
 
 
