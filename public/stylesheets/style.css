@@ -1,13 +1,31 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 300px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2{
+  font-size: 30px;
+}
+
+div {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font: 16 px
 }
 
 a {
   color: #00B7FF;
+  padding-bottom: 6px;
 }
 
 img {
-  height: 280 px;
+  height: 260px;
   width: 280px;
 }
+
+.form {}
