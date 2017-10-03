@@ -55,14 +55,27 @@ const WishlistSchema = new Schema({
     games: [GameSchema]    
 });
 
+const userSchema = new Schema ({
+    name: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: string,
+        required: false
+    },
+})
+
 // Creating the models for each schema
 const GameModel = mongoose.model('Game', GameSchema)
 const PlayedModel = mongoose.model('Played', PlayedSchema)
 const WishlistModel = mongoose.model('Wishlist', WishlistSchema)
+const UserModel = mongoose.model('User', userSchema)
 
 // export the models so they are able to be required in other parts
 module.exports = {
     GameModel: GameModel,
     PlayedModel: PlayedModel,
-    WishlistModel: WishlistModel
+    WishlistModel: WishlistModel,
+    UserModel: UserModel,
 }
