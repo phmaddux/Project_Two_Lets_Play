@@ -26,30 +26,30 @@ router.get('/', (request, response) => {
 })
 
 // New game
-router.get('/new', (request, response) => {
+router.get('/:playedId/new', (request, response) => {
     const playedId = request.params.playedId
-    PlayedModel.find({})
-        .then((played) => {
-            console.log(played)
-            response.render('played/new', {
-                playGame: played[0]
-            })
-        })
-            .catch((error) => {
-                console.log(error)
-        })
+    response.render('played/new', {
+        playedId: playedId
+    })
 })
 
 // create route
-router.post('/', (request, response) => {
-    const playedId  = request.params.playedId
-    // get new game info
-    const newGame = request.body
-    // create new game
-    PlayedModel.create(newGame)
+router.post('/:playedId/games/', (request, response) => {
+// GRAB the played ID from the parameters
+const playedId = request.params.playedId
+// GRAB the new game info from the request body
+const newGame = request.body
+    
+// USE the playedModel to find the played by ID
+PlayedModel.findById(playedId)
         .then((played) => {
+            // THEN once you have found the played from the database
+            // PUSH the new game object into the played's 
+            // game array            
             played.games.push(newGame)
-            return played.save()
+    
+            // SAVE the played and return the PROMISE
+            return played.save()    
         })
         .then((played) => {
             // after saving model, redirect to index
@@ -115,27 +115,8 @@ router.put('/:playedId/games/:gamesId/', (request, response) => {
         .catch((error) => {
             console.log(error)
         })    
-
 })
     
-
-
-    // // get played Id from parameters
-    // const playedId = request.params.playedId
-    // // get game Id fromt the parameters
-    // const gamesId = request.params.gamesId
-    // // get updated game from request body
-    // const updatedGame = request.body
-
-    // PlayedModel.findById(playedId)
-    //     .then((played) => {
-    //         // after played has been returned
-    //         // find the game by id from the played list
-    //         const game = played.games.id(gameId)
-            
-        // })
-        // save and redirect
-
 // Show route
 router.get('/:gamesId', (request, response) => {
     // Get company ID from the paramaters
@@ -156,6 +137,32 @@ router.get('/:gamesId', (request, response) => {
             console.log(error)
         })
 })
+
+// Delete Route
+router.get('/:gameId/delete', (request, response) => {
+    // grab played Id from the params
+    const playedId = request.params.playedId
+
+    // grab games Id from the params
+    const gameId = request.params.gameId
+
+    PlayedModel.findById(playedId)
+        .then((company) => {
+            //return played
+            //remove game from played
+            const game = played.game.id(gameId).remove()
+
+            // save played and return
+            return playedId.save()
+        })
+        .then(() => {
+            // After game is saved, redirect
+            response.redirect(`/played`)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    })
 
 
 module.exports = router
